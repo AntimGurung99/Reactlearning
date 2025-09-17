@@ -1,22 +1,24 @@
 import { useState } from "react";
-function AddTodo({onNewItems}) {
 
-  const[todoName,setTodoname] = useState();
-  const [todoDate,setTododate] = useState();
+
+function AddTodo({onNewItem}) {
+
+  const[todoName,setTodoName] = useState("");
+  const [dueDate,setdueDate] = useState("");
 
   const handleNameChange = (event) => {
-    setTodoname(event.target.value);
+    setTodoName(event.target.value);
   };
 
   const handleDateChange = (event) => {
-    setTododate(event.target.value);
+    setdueDate(event.target.value);
   }
 
 
    const handleAddButtonClicked = () => {
-    onNewItems(todoName,todoDate);
-    todoName("");
-    todoDate("");
+    onNewItem(todoName,dueDate);
+    setTodoName("");
+    setdueDate("");
    
    }
 
@@ -30,7 +32,7 @@ function AddTodo({onNewItems}) {
     onChange={handleNameChange}/></div>
 
     <div className="col-4" 
-    value={todoDate}
+    value={dueDate}
     onChange={handleDateChange}><input type="date"/></div>
 
 
