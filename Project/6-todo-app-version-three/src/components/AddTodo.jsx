@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { RiAddLargeFill } from "react-icons/ri";
 
 
 function AddTodo({onNewItem}) {
@@ -38,7 +39,7 @@ function AddTodo({onNewItem}) {
 
     <div className="col-2">
     <button type="Button" className="btn btn-success kg-button"
-    onClick ={handleAddButtonClicked}>Add</button>
+    onClick ={handleAddButtonClicked}><RiAddLargeFill /></button>
    </div>
    </div>
    </div>
