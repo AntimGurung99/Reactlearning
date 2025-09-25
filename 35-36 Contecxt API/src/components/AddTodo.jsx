@@ -6,14 +6,14 @@ function AddTodo({onNewItem}) {
 
   const[todoName,setTodoName] = useState("");
   const [dueDate,setdueDate] = useState("");
-  const noOfClicks = useRef(0);
+  // const noOfClicks = useRef(0);
   // const todoNameElement = useRef();
   // const dueDateElement = useRef();
 
   const handleNameChange = (event) => {
     setTodoName(event.target.value);
-    noOfClicks.current = noOfClicks.current + 1;
-    console.log(noOfClicks.current);
+    // noOfClicks.current = noOfClicks.current + 1;
+    // console.log(noOfClicks.current);
   };
 
   const handleDateChange = (event) => {
@@ -23,8 +23,8 @@ function AddTodo({onNewItem}) {
 
    const handleAddButtonClicked = (event) => {
     // event.preventDefault();
-    const todoName = todoNameElement.current.value;
-    const dueDate = dueDateElement.current.value;
+    // const todoName = todoNameElement.current.value;
+    // const dueDate = dueDateElement.current.value;
     // todoNameElement.current.value = "";
     // dueDateElement.current.value = "";
     onNewItem(todoName,dueDate);
@@ -36,29 +36,27 @@ function AddTodo({onNewItem}) {
   return(
     <div className="container">
 
-    <form className=" row kg-row" 
-    // onSubmit={handleAddButtonClicked}
-    >
+    <div className=" row kg-row" >
       
     <div className="col-6" ><input type="text" placeholder="Enter todo here" 
-    value ={todoNameElement}
+    value ={todoName}
     onChange={handleNameChange}
     /></div>
 
     <div className="col-4" 
     value={dueDate}
-    ref = {dueDateElement}
+    // ref = {dueDateElement}
     onChange={handleDateChange}
     ><input type="date"/></div>
 
 
     <div className="col-2">
-    <button type="submit" className="btn btn-success kg-button"
-    onClick ={handleAddButtonClicked}
+    <button type="button" className="btn btn-success kg-button"
+     onClick ={handleAddButtonClicked}
     >
       <RiAddLargeFill /></button>
    </div>
-   </form>
+   </div>
    </div>
   );
 };

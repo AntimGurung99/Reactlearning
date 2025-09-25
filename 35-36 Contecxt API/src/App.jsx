@@ -4,7 +4,7 @@ import TodoItems from "./components/TodoItems";
 import WelcomeMessage from "./components/WelcomeMessage";
 import './App.css';
 import { useState } from "react";
-
+import { TodoItemsContext } from "./store/todo-items-store";
 
 
 function App() {
@@ -50,13 +50,15 @@ function App() {
   }
 
 
-  return <center
-    className="todo-container">
-    <AppName />
-    <AddTodo onNewItem= {handleNewItems}/>
-    {todoItems.length === 0 && <WelcomeMessage />}
-    <TodoItems todoItems={todoItems} onDeleteClick ={handleDeleteItem}></TodoItems>
-  </center>
+  return 
+    <TodoItemsContext.Provider>
+      <center className="todo-container">
+      <AppName />
+      <AddTodo onNewItem= {handleNewItems}/>
+       {todoItems.length === 0 && <WelcomeMessage />}
+      <TodoItems todoItems={todoItems} onDeleteClick ={handleDeleteItem}></TodoItems>
+      </center>
+   </TodoItemsContext.Provider>
 
 };
 export default App;
