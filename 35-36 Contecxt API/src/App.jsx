@@ -28,7 +28,7 @@ function App() {
 
   const [todoItems,setTodoItems] = useState([]);
 
-  const handleNewItems = (itemName, itemDueDate) => {
+  const addNewItem  = (itemName, itemDueDate) => {
   // console.log(`New Item Added: ${itemName} Date: ${itemDueDate}`);
   const newTodoItems = [...todoItems,{name: itemName, dueDate: itemDueDate}];
   setTodoItems(newTodoItems);
@@ -43,22 +43,25 @@ function App() {
 
 
 
-  const handleDeleteItem = (todoItemName) =>{
+  const deleteItem = (todoItemName) =>{
     const newTodoItems = todoItems.filter((item) => item.name !== todoItemName)
     setTodoItems(newTodoItems);
     
-  }
-
-
-  return 
-    <TodoItemsContext.Provider>
+  } 
+  // const defaultTodoItems = [{name: "Have to study", dueDate: "2025/10/4"},];
+  return (
+    <TodoItemsContext.Provider value={{
+      todoItems,
+      addNewItem,
+      deleteItem,
+    }}>
       <center className="todo-container">
-      <AppName />
-      <AddTodo onNewItem= {handleNewItems}/>
-       {todoItems.length === 0 && <WelcomeMessage />}
-      <TodoItems todoItems={todoItems} onDeleteClick ={handleDeleteItem}></TodoItems>
+      <AppName/>
+      <AddTodo/>
+     <WelcomeMessage></WelcomeMessage>
+      <TodoItems></TodoItems>
       </center>
    </TodoItemsContext.Provider>
-
-};
+  );
+}
 export default App;

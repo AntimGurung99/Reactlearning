@@ -1,9 +1,11 @@
 import { useState, useRef} from "react";
+import { useContext } from "react";
+import { TodoItemsContext } from "../store/todo-items-store";
 import { RiAddLargeFill } from "react-icons/ri";
 
 
-function AddTodo({onNewItem}) {
-
+function AddTodo() {
+  const {addNewItem} = useContext(TodoItemsContext);
   const[todoName,setTodoName] = useState("");
   const [dueDate,setdueDate] = useState("");
   // const noOfClicks = useRef(0);
@@ -27,7 +29,7 @@ function AddTodo({onNewItem}) {
     // const dueDate = dueDateElement.current.value;
     // todoNameElement.current.value = "";
     // dueDateElement.current.value = "";
-    onNewItem(todoName,dueDate);
+    addNewItem(todoName,dueDate);
     setTodoName("");
     setdueDate("");
    
